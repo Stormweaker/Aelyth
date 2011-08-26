@@ -21,9 +21,37 @@ public class mod_Aelyth extends BaseMod
 		setupName();
 		setupTexture();
 		AddRecipe();
+		
+		
+		new DimensionAelyth().name = "Aelyth";
+        
+        ModLoader.RegisterBlock(AelythPortal);
+        ModLoader.RegisterBlock(BlockAelythPortalStarter);
+        
+        ModLoader.AddName(PortalStarterAelyth, "Aelyth Portal Starter");
+        
+        ModLoader.AddRecipe(new ItemStack(PortalStarterAelyth, 1), new Object[] {
+        	"#", Character.valueOf('#'), Block.dirt
+        });
+        ModLoader.AddRecipe(new ItemStack(AelythPortal, 20), new Object[] {
+        	"##", Character.valueOf('#'), Block.dirt
+        });
+        ModLoader.AddRecipe(new ItemStack(BlockAelythPortalStarter, 20), new Object[] {
+        	"#", "#", Character.valueOf('#'), Block.dirt
+        });
 	}
 	
-	
+	public static final BlockPortalAelyth AelythPortal;
+    public static final Item PortalStarterAelyth;
+    public static final Block BlockAelythPortalStarter;
+
+    static 
+    {
+    AelythPortal = (BlockPortalAelyth)(new BlockPortalAelyth(234, ModLoader.getUniqueSpriteIndex("/terrain.png"))).setHardness(-1F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setBlockName("NameherePortal");
+    PortalStarterAelyth = new ItemAelythPortalStarter(1987).setIconCoord(5, 0).setItemName("NameherePortalStarter");
+    BlockAelythPortalStarter = new BlockAelythPortalStarter(235, 1, Material.sponge).setHardness(0.0F).disableStats().disableNeighborNotifyOnMetadataChange().setBlockName("BlockNameherePortalStarter");
+    }
+
 	
 	public void RegisterBlock()
 	{
